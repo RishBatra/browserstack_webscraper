@@ -1,0 +1,47 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="BrowserStack Suite" parallel="tests" thread-count="5">
+    <test name="Chrome Windows Test">
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="os" value="Windows"/>
+        <parameter name="device" value=""/>
+        <classes>
+            <class name="com.browserstack.ElPaisWebScraper"/>
+        </classes>
+    </test>
+
+    <test name="Firefox Mac Test">
+        <parameter name="browser" value="Firefox"/>
+        <parameter name="os" value="OS X"/>
+        <parameter name="device" value=""/>
+        <classes>
+            <class name="com.browserstack.ElPaisWebScraper"/>
+        </classes>
+    </test>
+
+    <test name="iPhone Test">
+        <parameter name="browser" value=""/>
+        <parameter name="os" value="iOS"/>
+        <parameter name="device" value="iPhone 14"/>
+        <classes>
+            <class name="com.browserstack.ElPaisWebScraper"/>
+        </classes>
+    </test>
+
+    <test name="Samsung Test">
+        <parameter name="browser" value=""/>
+        <parameter name="os" value="Android"/>
+        <parameter name="device" value="Samsung Galaxy S23"/>
+        <classes>
+            <class name="com.browserstack.ElPaisWebScraper"/>
+        </classes>
+    </test>
+
+    <test name="Edge Windows Test">
+        <parameter name="browser" value="Edge"/>
+        <parameter name="os" value="Windows"/>
+        <parameter name="device" value=""/>
+        <classes>
+            <class name="com.browserstack.ElPaisWebScraper"/>
+        </classes>
+    </test>
+</suite>

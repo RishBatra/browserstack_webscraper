@@ -20,12 +20,8 @@ public class BasePage {
         Capabilities caps = ((RemoteWebDriver) driver).getCapabilities();
         String device = (String) caps.getCapability("deviceName");
         boolean value = device != null && !device.isEmpty();
-        System.out.println("I AM IN method, device ="+ device +"value ="+ value);
         return value;
     }
-
-
-
 
     protected void waitForPageLoad() {
         // Wait for document ready state

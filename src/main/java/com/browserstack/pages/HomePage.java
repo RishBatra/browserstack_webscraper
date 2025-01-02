@@ -21,14 +21,12 @@ public class HomePage extends BasePage{
     public OpinionPage goToOpinionSection(){
         handleCookiePopup();
         waitForPageLoad();
-        System.out.println("I AM HERE");
         if (isMobileDevice()) {
             // Mobile-specific navigation
             waitForElementVisible(hamBurgerMenuButton).click();
             waitForElementPresent(opinionLinkOnMobbile).click();
         } else {
             // Desktop navigation
-            System.out.println("I AM HERE");
             waitForElement(opinionLink).click();
         }
 

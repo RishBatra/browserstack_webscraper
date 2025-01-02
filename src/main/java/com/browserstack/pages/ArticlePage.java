@@ -6,6 +6,7 @@ import org.openqa.selenium.*;
 import java.util.List;
 import java.util.stream.Collectors;
 public class ArticlePage extends BasePage {
+    //Locators for elements on article page
     private final By titleLocator = By.cssSelector("article header h1.a_t, article header h2.a_t");
     private final By contentLocator = By.cssSelector("article div figure figcaption span, article div[data-dtm-region='articulo_cuerpo'] p");
     private final By imageLocator = By.xpath("//article//header//img");
@@ -21,6 +22,8 @@ public class ArticlePage extends BasePage {
             String title = waitForElementPresent(titleLocator).getText();
             String content = "";
 
+            //Below code uses looping of try catch to implement retry logic,
+            //this is done to overcome StaleElementReferenceException
             int retryCount = 0;
             while (retryCount < 3) {
                 try {

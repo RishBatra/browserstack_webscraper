@@ -34,7 +34,6 @@ public class OpinionPage extends BasePage {
                 waitForPageLoad();
             }
         }
-
         return urls;
     }
 }

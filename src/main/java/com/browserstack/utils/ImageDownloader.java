@@ -23,7 +23,6 @@ public class ImageDownloader {
             try (InputStream in = url.openStream()) {
                 Files.copy(in, destinationPath, StandardCopyOption.REPLACE_EXISTING);
             }
-
         } catch (IOException e) {
             System.err.println("Error downloading image: " + e.getMessage());
         }

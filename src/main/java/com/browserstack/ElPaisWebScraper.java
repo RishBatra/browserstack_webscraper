@@ -15,15 +15,17 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.*;
+import org.testng.annotations.Optional;
+
 
 public class ElPaisWebScraper {
     private WebDriver driver;
     private List<Article> articles;
 
-    @Parameters({"browser", "os", "device"})
+    @Parameters({"browser", "os", "device", "isLocal"})
     @BeforeTest
-    public void setupDriver(String browser, String os, String device) throws MalformedURLException {
-        driver = BrowserStackConfig.createDriver(browser, os, device);
+    public void setupDriver(String browser, String os, String device, @Optional("false") String isLocal) throws MalformedURLException {
+        driver = BrowserStackConfig.createDriver(browser, os, device, Boolean.parseBoolean(isLocal));
         if (device == null || device.isEmpty()) {
             driver.manage().window().maximize();
         }
@@ -103,10 +105,15 @@ public class ElPaisWebScraper {
         args.put("reason", reason);
 
         try {
-            jse.executeScript(
-                    "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": " +
-                            new JSONObject(args).toString() + "}"
-            );
+            if (!Boolean.parseBoolean(System.getProperty("isLocal", "false"))) {
+                jse.executeScript(
+                        "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": " +
+                                new JSONObject(args).toString() + "}"
+                );
+            }else{
+                System.out.println("Test Status: " + status);
+                System.out.println("Reason: " + reason);
+            }
         } catch (Exception e) {
             System.err.println("Error marking test status: " + e.getMessage());
         }

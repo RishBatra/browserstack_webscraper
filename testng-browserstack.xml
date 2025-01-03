@@ -11,7 +11,7 @@
 
     <test name="Firefox Mac Test">
         <parameter name="browser" value="Firefox"/>
-        <parameter name="os" value="OS X"/>
+        <parameter name="os" value="OS X Monterey"/>
         <parameter name="device" value=""/>
         <classes>
             <class name="com.browserstack.ElPaisWebScraper"/>

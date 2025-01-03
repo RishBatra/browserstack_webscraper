@@ -27,7 +27,6 @@ public class ArticlePage extends BasePage {
             int retryCount = 0;
             while (retryCount < 3) {
                 try {
-                    waitForPageLoad();
                     List<WebElement> paragraphs = waitForElementsPresent(contentLocator);
                     content = paragraphs.stream()
                             .map(WebElement::getText)
